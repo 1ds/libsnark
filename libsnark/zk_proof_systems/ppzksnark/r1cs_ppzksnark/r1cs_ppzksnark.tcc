@@ -14,7 +14,6 @@ See r1cs_ppzksnark.hpp .
 #ifndef R1CS_PPZKSNARK_TCC_
 #define R1CS_PPZKSNARK_TCC_
 
-#include <inttypes.h>
 #include <algorithm>
 #include <cassert>
 #include <functional>
@@ -439,7 +438,7 @@ knowledge_commitment<T1, T2> r1cs_compute_proof_kc(const qap_witness<Fr<ppT> > &
 {
     knowledge_commitment<T1, T2> returnval = kcv[0] + (zk_shift * kcv[qap_wit.num_variables()+1]);
     /* printf("Son of a...: %d\n", kcv.domain_size()); */
-    printf("Son of a...: % PRIu64 \n", kcv.domain_size());
+    printf("Son of a...: %lu\n", kcv.domain_size());
     return returnval;
 
 #ifdef DEBUG
