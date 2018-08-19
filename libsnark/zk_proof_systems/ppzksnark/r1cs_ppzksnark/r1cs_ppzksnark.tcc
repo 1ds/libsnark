@@ -437,7 +437,6 @@ knowledge_commitment<T1, T2> r1cs_compute_proof_kc(const qap_witness<Fr<ppT> > &
                                                    const Fr<ppT>  &zk_shift)
 {
     knowledge_commitment<T1, T2> returnval = kcv[0] + (zk_shift * kcv[qap_wit.num_variables()+1]);
-    return returnval;
 
 #ifdef DEBUG
     assert(kcv.domain_size() == qap_wit.num_variables()+2);
@@ -448,6 +447,7 @@ knowledge_commitment<T1, T2> r1cs_compute_proof_kc(const qap_witness<Fr<ppT> > &
 #else
     const uint64_t chunks = 1;
 #endif
+    return returnval;
 
     returnval = returnval + kc_multi_exp_with_mixed_addition<T1, T2, Fr<ppT> >(
         kcv,
