@@ -342,7 +342,7 @@ r1cs_ppzksnark_keypair<ppT> r1cs_ppzksnark_generator(
     print_indent(); printf("* G2 window: %zu\n", g2_window);
 
 #ifdef MULTICORE
-    const size_t chunks = omp_get_max_threads(); // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
+    const size_t chunks = 4; // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
 #else
     const size_t chunks = 1;
 #endif
@@ -441,10 +441,10 @@ knowledge_commitment<T1, T2> r1cs_compute_proof_kc(const qap_witness<Fr<ppT> > &
 #ifdef DEBUG
     assert(kcv.domain_size() == qap_wit.num_variables()+2);
 #endif
-    printf("Son of a...: %d\n", omp_get_max_threads());
+    printf("Son of a...: %d\n", 4);
     return returnval;
 #ifdef MULTICORE
-    const uint64_t chunks = omp_get_max_threads(); // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
+    const uint64_t chunks = 4; // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
 #else
     const uint64_t chunks = 1;
 #endif
@@ -472,7 +472,7 @@ G1<ppT> r1cs_compute_proof_K(const qap_witness<Fr<ppT>> &qap_wit, const G1_vecto
 #endif
 
 #ifdef MULTICORE
-    const uint64_t chunks = omp_get_max_threads(); // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
+    const uint64_t chunks = 4; // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
 #else
     const uint64_t chunks = 1;
 #endif
@@ -501,7 +501,7 @@ G1<ppT> r1cs_compute_proof_H(const qap_witness<Fr<ppT> > &qap_wit, const G1_vect
 #endif
 
 #ifdef MULTICORE
-    const uint64_t chunks = omp_get_max_threads(); // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
+    const uint64_t chunks = 4; // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
 #else
     const uint64_t chunks = 1;
 #endif
@@ -686,7 +686,7 @@ bool r1cs_ppzksnark_online_verifier_weak_IC(const r1cs_ppzksnark_processed_verif
 
     const accumulation_vector<G1<ppT> > accumulated_IC = pvk.encoded_IC_query.template accumulate_chunk<Fr<ppT> >(primary_input.begin(), primary_input.end(), 0);
     const G1<ppT> &acc = accumulated_IC.first;
-    
+
     if (!proof.is_well_formed())
     {
         return false;
