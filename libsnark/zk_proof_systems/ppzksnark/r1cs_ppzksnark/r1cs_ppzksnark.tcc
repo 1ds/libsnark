@@ -441,7 +441,7 @@ knowledge_commitment<T1, T2> r1cs_compute_proof_kc(const qap_witness<Fr<ppT> > &
 #ifdef DEBUG
     assert(kcv.domain_size() == qap_wit.num_variables()+2);
 #endif
-    printf_s("Son of a...: %d\n", omp_get_max_threads());
+    printf("Son of a...: %d\n", omp_get_max_threads());
     return returnval;
 #ifdef MULTICORE
     const uint64_t chunks = omp_get_max_threads(); // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
