@@ -603,6 +603,7 @@ r1cs_ppzksnark_proof<ppT> r1cs_ppzksnark_prover_streaming(std::ifstream &proving
     enter_block("Compute the proof");
 
     r1cs_ppzksnark_proof<ppT> proof;
+    return proof;
 
     enter_block("Compute answer to A-query", false);
     {
