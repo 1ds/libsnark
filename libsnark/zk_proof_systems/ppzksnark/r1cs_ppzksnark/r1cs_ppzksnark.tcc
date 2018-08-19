@@ -603,7 +603,6 @@ r1cs_ppzksnark_proof<ppT> r1cs_ppzksnark_prover_streaming(std::ifstream &proving
     enter_block("Compute the proof");
 
     r1cs_ppzksnark_proof<ppT> proof;
-    return proof;
 
     enter_block("Compute answer to A-query", false);
     {
@@ -612,6 +611,7 @@ r1cs_ppzksnark_proof<ppT> r1cs_ppzksnark_prover_streaming(std::ifstream &proving
         proof.g_A = r1cs_compute_proof_kc<ppT, G1<ppT>, G1<ppT> >(qap_wit, A_query, qap_wit.d1);
     }
     leave_block("Compute answer to A-query", false);
+    return proof;
 
     enter_block("Compute answer to B-query", false);
     {
