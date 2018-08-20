@@ -438,12 +438,12 @@ knowledge_commitment<T1, T2> r1cs_compute_proof_kc(const qap_witness<Fr<ppT> > &
 {
     knowledge_commitment<T1, T2> returnval = kcv[0] + (zk_shift * kcv[qap_wit.num_variables()+1]);
     /* printf("Son of a...: %d\n", kcv.domain_size()); */
-    printf("Son of a...: %lu\n", kcv.domain_size());
-    return returnval;
+    /* printf("Son of a...: %lu\n", kcv.domain_size()); */
+    /* return returnval; */
 
-#ifdef DEBUG
-    assert(kcv.domain_size() == qap_wit.num_variables()+2);
-#endif
+/* #ifdef DEBUG */
+/*     assert(kcv.domain_size() == qap_wit.num_variables()+2); */
+/* #endif */
 
 #ifdef MULTICORE
     const uint64_t chunks = omp_get_max_threads(); // to override, set OMP_NUM_THREADS env var or call omp_set_num_threads()
